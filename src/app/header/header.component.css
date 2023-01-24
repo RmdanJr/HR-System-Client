@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(217, 232, 246);
+  padding: 0 40px;
+}
+
+.brand {
+  width: 145px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-img {
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid orange;
+}
+
+.brand-title {
+  font-size: large;
+  font-weight: bold;
+}
+
+.nav {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  padding: 0px;
+}
+
+.nav-el {
+  padding-bottom: 2px;
+}
+
+.active {
+  border-bottom: 2px solid rgb(75, 75, 75);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.msg-username {
+  font-weight: bold;
+}
