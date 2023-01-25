@@ -11,6 +11,7 @@ import { AddDepartmentComponent } from './departments/add-department/add-departm
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { DepartmentsListComponent } from './departments/departments-list/departments-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SignupComponent } from './auth/signup/signup.component';
     AuthComponent,
     LoginComponent,
     SignupComponent,
+    DepartmentsListComponent,
   ],
   imports: [
     BrowserModule,

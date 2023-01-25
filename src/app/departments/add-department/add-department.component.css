@@ -1,29 +1,11 @@
-a {
- color: orange;
- text-decoration: none;
- transition: all 0.3s ease-in-out;
-}
-
-a:hover {
- text-decoration: underline;
+.form-wrapper {
+ display: flex;
+ justify-content: center;
+ margin-top: 50px;
 }
 
 .form {
  width: 500px;
-}
-
-.header {
- margin-bottom: 2rem;
-}
-
-.header p {
- font-weight: 500;
- opacity: 0.9;
-}
-
-.footer {
- margin-top: 2rem;
- text-align: center;
 }
 
 .field {
@@ -33,11 +15,13 @@ a:hover {
  margin-bottom: 1rem;
 }
 
-.field input {
+.field input,
+.field select {
  font-size: 1rem;
  line-height: 48px;
  padding: 0 1rem;
  width: 100%;
+ height: 3rem;
  border-radius: 0.5rem;
  border: none;
  outline: none;
@@ -45,7 +29,8 @@ a:hover {
  background-color: #FEFCF3;
 }
 
-.field input::placeholder {
+.field input::placeholder,
+.field select::placeholder {
  font-family: inherit;
  opacity: 0.5;
 }
@@ -60,9 +45,6 @@ a:hover {
  line-height: 48px;
  font-family: inherit;
  font-size: inherit;
-}
-
-.btn-primary {
  background: orange;
  color: #fff;
 }

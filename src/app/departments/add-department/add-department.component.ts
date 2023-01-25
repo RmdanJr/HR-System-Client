@@ -1,28 +1,12 @@
 import { Component, Input } from '@angular/core';
-
-export interface Employee {
-  id: string;
-  username: string;
-  name: string;
-  birthDate: Date;
-  gender: string;
-  graduationDate: Date;
-  salary: { gross: number; net: number; insuranceAmount: number };
-  department: string;
-  team: string;
-  expertises: Array<{ name: string; level: string }>;
-  manager: string;
-  managedDepartment: string;
-  managedTeam: string;
-  managedEmployees: string[];
-}
+import { Employee } from 'src/app/employees/employees.component';
 
 @Component({
-  selector: 'app-employees',
-  templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css'],
+  selector: 'app-add-department',
+  templateUrl: './add-department.component.html',
+  styleUrls: ['./add-department.component.css'],
 })
-export class EmployeesComponent {
+export class AddDepartmentComponent {
   @Input() employees: Employee[] = [
     {
       id: 'df34-l34j-23j4-dsf8',
