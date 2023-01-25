@@ -1,12 +1,18 @@
 <header class="header">
-  <div class="brand">
+  <a class="brand" routerLink="">
     <img src="assets/icon.png" alt="HR System icon" class="brand-img" />
     <p class="brand-title">HR System</p>
-  </div>
+  </a>
   <ul class="nav">
-    <li class="nav-el">Departments</li>
-    <li class="nav-el">Teams</li>
-    <li class="nav-el">Employees</li>
+    <li class="nav-el">
+      <a routerLink="departments" routerLinkActive="active">Departments</a>
+    </li>
+    <li class="nav-el">
+      <a routerLink="teams" routerLinkActive="active">Teams</a>
+    </li>
+    <li class="nav-el">
+      <a routerLink="employees" routerLinkActive="active">Employees</a>
+    </li>
   </ul>
   <p class="greeting-msg">
     Hi, <span class="msg-username">{{ userName }}</span

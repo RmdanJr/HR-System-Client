@@ -38,6 +38,11 @@
   padding-bottom: 2px;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .active {
   border-bottom: 2px solid rgb(75, 75, 75);
   font-weight: bold;

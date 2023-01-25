@@ -5,7 +5,7 @@ interface Department {
   name: string;
   manager: string;
   teams: string[];
-  employeesNum: number;
+  employees: string[];
 }
 
 @Component({
@@ -17,38 +17,10 @@ export class DepartmentsComponent {
   @Input() departments: Department[] = [
     {
       id: '348s-sdls-34k3-4l34',
-      name: 'Development Department',
+      name: 'Software Development',
       manager: 'Ayman Hassan',
       teams: ['MRC', 'Tech Woriorrs', 'another team'],
-      employeesNum: 120,
-    },
-    {
-      id: '348s-sdls-34k3-4l34',
-      name: 'Development Department',
-      manager: 'Ayman Hassan',
-      teams: ['MRC', 'Tech Woriorrs', 'another team'],
-      employeesNum: 120,
-    },
-    {
-      id: '348s-sdls-34k3-4l34',
-      name: 'Development Department',
-      manager: 'Ayman Hassan',
-      teams: ['MRC', 'Tech Woriorrs', 'another team'],
-      employeesNum: 120,
-    },
-    {
-      id: '348s-sdls-34k3-4l34',
-      name: 'Development Department',
-      manager: 'Ayman Hassan',
-      teams: ['MRC', 'Tech Woriorrs', 'another team'],
-      employeesNum: 120,
-    },
-    {
-      id: '348s-sdls-34k3-4l34',
-      name: 'Development Department',
-      manager: 'Ayman Hassan',
-      teams: ['MRC', 'Tech Woriorrs', 'another team'],
-      employeesNum: 120,
+      employees: ['Ayman Hassan', 'Ayman Shebl', 'Hassan Ramadan'],
     },
   ];
 }
