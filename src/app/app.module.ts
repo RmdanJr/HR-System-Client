@@ -7,6 +7,10 @@ import { HeaderComponent } from './header/header.component';
 import { DepartmentsComponent } from './departments/departments.component';
 import { TeamsComponent } from './teams/teams.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { AddDepartmentComponent } from './departments/add-department/add-department.component';
+import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +19,10 @@ import { EmployeesComponent } from './employees/employees.component';
     DepartmentsComponent,
     TeamsComponent,
     EmployeesComponent,
+    AddDepartmentComponent,
+    AuthComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
