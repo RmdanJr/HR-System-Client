@@ -1,0 +1,28 @@
+<div class="details-wrapper">
+  <h3>{{ department.name }} Department</h3>
+  <p>
+    <span style="font-weight: bold">ID: </span><code>{{ department.id }}</code>
+  </p>
+  <p>
+    <span style="font-weight: bold">Manager: </span>
+    <a routerLink="/employees/{{ department.manager.id }}">
+      {{ department.manager.name }}
+    </a>
+  </p>
+  <details open>
+    <summary>Teams</summary>
+    <ol>
+      <li *ngFor="let team of department.teams">
+        <a routerLink="/teams/{{ team.id }}">{{ team.name }}</a>
+      </li>
+    </ol>
+  </details>
+  <details open>
+    <summary>Employees</summary>
+    <ol>
+      <li *ngFor="let employee of department.employees">
+        <a routerLink="/employees/{{ employee.id }}">{{ employee.name }}</a>
+      </li>
+    </ol>
+  </details>
+</div>

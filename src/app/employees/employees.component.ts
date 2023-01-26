@@ -1,21 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-export interface Employee {
-  id: string;
-  username: string;
-  name: string;
-  birthDate: Date;
-  gender: string;
-  graduationDate: Date;
-  salary: { gross: number; net: number; insuranceAmount: number };
-  department: string;
-  team: string;
-  expertises: Array<{ name: string; level: string }>;
-  manager: string;
-  managedDepartment: string;
-  managedTeam: string;
-  managedEmployees: string[];
-}
+import { Employee } from './employee.model';
 
 @Component({
   selector: 'app-employees',
@@ -32,15 +16,15 @@ export class EmployeesComponent {
       gender: 'MALE',
       graduationDate: new Date(2022, 7, 1),
       salary: { gross: 30000, net: 24500, insuranceAmount: 500 },
-      department: 'Software Development',
-      team: 'MRC',
+      department: { id: 'sw-dev-department-id', name: 'Software Development' },
+      team: { id: 'mrc-team-id', name: 'MRC' },
       expertises: [
         { name: 'C++', level: 'EXPERT' },
         { name: 'Java', level: 'NEWBIE' },
       ],
-      manager: 'Ayman Shebl',
-      managedDepartment: '',
-      managedTeam: '',
+      manager: { id: 'ayman-shebl-employee-id', name: 'Ayman Shebl' },
+      managedDepartment: null,
+      managedTeam: null,
       managedEmployees: [],
     },
   ];

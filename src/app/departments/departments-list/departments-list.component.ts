@@ -9,11 +9,23 @@ import { Department } from '../department.model';
 export class DepartmentsListComponent {
   @Input() departments: Department[] = [
     {
-      id: '348s-sdls-34k3-4l34',
+      id: 'sw-dev-department-id',
       name: 'Software Development',
-      manager: 'Ayman Hassan',
-      teams: ['MRC', 'Tech Woriorrs', 'another team'],
-      employees: ['Ayman Hassan', 'Ayman Shebl', 'Hassan Ramadan'],
+      manager: { id: 'ayman-hassan-employee-id', name: 'Ayman Hassan' },
+      teams: [
+        { id: 'mrc-team-id', name: 'MRC' },
+        { id: 'tech-woriorrs-team-id', name: 'Tech Woriorrs' },
+        { id: 'another-team-team-id', name: 'another team' },
+      ],
+      employees: [
+        { id: 'ayman-hassan-employee-id', name: 'Ayman Hassan' },
+        { id: 'ayman-shebl-employee-id', name: 'Ayman Shebl' },
+        { id: 'hassan-ramadan-employee-id', name: 'Hassan Ramadan' },
+      ],
     },
   ];
+
+  getTeamsNames(departmentIdx: number): string[] {
+    return this.departments[departmentIdx].teams.map((team) => team.name);
+  }
 }

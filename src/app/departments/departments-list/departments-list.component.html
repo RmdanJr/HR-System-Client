@@ -5,26 +5,36 @@
 <table>
   <thead>
     <tr>
-      <th>Id</th>
       <th>Name</th>
       <th>Manager</th>
       <th>Teams</th>
       <th>Employees No.</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let department of departments">
-      <td>{{ department.id }}</td>
+    <tr *ngFor="let department of departments; let idx = index">
       <td>{{ department.name }}</td>
-      <td>{{ department.manager }}</td>
+      <td>{{ department.manager.name }}</td>
       <td>
         {{
-          department.teams.length > 2
-            ? department.teams.slice(0, 2).join(", ") + " and others."
-            : department.teams.join(", ")
+          getTeamsNames(idx).length > 2
+            ? getTeamsNames(idx).slice(0, 2).join(", ") + " and others."
+            : getTeamsNames(idx).join(", ")
         }}
       </td>
       <td>{{ department.employees.length }}</td>
+      <td>
+        <a routerLink="{{ department.id }}">
+          <span class="material-symbols-outlined">open_in_full</span>
+        </a>
+        <a routerLink="{{ department.id }}/edit">
+          <span class="material-symbols-outlined">edit</span>
+        </a>
+        <a routerLink="{{ department.id }}/delete">
+          <span class="material-symbols-outlined">delete</span>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>
