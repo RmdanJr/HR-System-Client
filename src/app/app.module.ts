@@ -15,6 +15,7 @@ import { DepartmentsListComponent } from './departments/departments-list/departm
 import { DepartmentDetailsComponent } from './departments/department-details/department-details.component';
 import { EditDepartmentComponent } from './departments/edit-department/edit-department.component';
 import { DeleteDepartmentComponent } from './departments/delete-department/delete-department.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DeleteDepartmentComponent } from './departments/delete-department/delet
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

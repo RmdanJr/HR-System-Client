@@ -1,1 +1,43 @@
-<p>edit-department works!</p>
+<div class="form-wrapper">
+  <form action="" class="form">
+    <h3>Edit Department</h3>
+    <div class="field">
+      <label for="">Name</label>
+      <input
+        type="text"
+        placeholder="Edit department name"
+        [value]="department.name"
+      />
+    </div>
+    <div class="field">
+      <label for="">Manager</label>
+      <select name="manager" id="manager" [(ngModel)]="managerId">
+        <option value=""></option>
+        <option *ngFor="let employee of employees" [value]="employee.id">
+          {{ employee.name }}
+        </option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="">Teams</label>
+      <div class="team-field" *ngFor="let team of department.teams">
+        <p>{{ team.name }}</p>
+        <span class="material-symbols-outlined" (click)="deleteTeam(team.id)">
+          delete
+        </span>
+      </div>
+      <label *ngIf="getNewTeams().length !== 0">Add Team</label>
+      <div *ngIf="getNewTeams().length !== 0" class="add-team-field">
+        <select name="teams" id="teams" class="add-team-select" #newTeam>
+          <option *ngFor="let team of getNewTeams()" [value]="team.id">
+            {{ team.name }}
+          </option>
+        </select>
+        <button class="btn add-team-btn" (click)="addNewTeam()">
+          Add Team
+        </button>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Edit Department</button>
+  </form>
+</div>
