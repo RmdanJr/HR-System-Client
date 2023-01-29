@@ -16,6 +16,7 @@ import { DepartmentDetailsComponent } from './departments/department-details/dep
 import { EditDepartmentComponent } from './departments/edit-department/edit-department.component';
 import { DeleteDepartmentComponent } from './departments/delete-department/delete-department.component';
 import { FormsModule } from '@angular/forms';
+import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     DepartmentDetailsComponent,
     EditDepartmentComponent,
     DeleteDepartmentComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
