@@ -17,6 +17,11 @@ import { EditDepartmentComponent } from './departments/edit-department/edit-depa
 import { DeleteDepartmentComponent } from './departments/delete-department/delete-department.component';
 import { FormsModule } from '@angular/forms';
 import { ModalComponent } from './shared/modal/modal.component';
+import { AddTeamComponent } from './teams/add-team/add-team.component';
+import { DeleteTeamComponent } from './teams/delete-team/delete-team.component';
+import { TeamDetailsComponent } from './teams/team-details/team-details.component';
+import { TeamsListComponent } from './teams/teams-list/teams-list.component';
+import { EditTeamComponent } from './teams/edit-team/edit-team.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,11 @@ import { ModalComponent } from './shared/modal/modal.component';
     EditDepartmentComponent,
     DeleteDepartmentComponent,
     ModalComponent,
+    AddTeamComponent,
+    DeleteTeamComponent,
+    TeamDetailsComponent,
+    TeamsListComponent,
+    EditTeamComponent,
   ],
   imports: [
     BrowserModule,

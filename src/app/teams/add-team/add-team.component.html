@@ -1,0 +1,19 @@
+<div class="form-wrapper">
+  <form action="" class="form">
+    <h3>Add New Team</h3>
+    <div class="field">
+      <label for="">Name</label>
+      <input type="text" placeholder="Enter team name" />
+    </div>
+    <div class="field">
+      <label for="">Lead</label>
+      <select name="lead" id="lead">
+        <option value=""></option>
+        <option *ngFor="let employee of employees" value="{{ employee.id }}">
+          {{ employee.name }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Department</button>
+  </form>
+</div>

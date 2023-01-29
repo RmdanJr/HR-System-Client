@@ -1,0 +1,34 @@
+<div class="list-header">
+  <h3>Teams</h3>
+  <button class="btn"><a routerLink="new">Add team</a></button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Department</th>
+      <th>Lead</th>
+      <th>Employees No.</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let team of teams">
+      <td>{{ team.name }}</td>
+      <td>{{ team.department.name }}</td>
+      <td>{{ team.lead.name }}</td>
+      <td>{{ team.members.length }}</td>
+      <td>
+        <a routerLink="{{ team.id }}">
+          <span class="material-symbols-outlined">open_in_full</span>
+        </a>
+        <a routerLink="{{ team.id }}/edit">
+          <span class="material-symbols-outlined">edit</span>
+        </a>
+        <a routerLink="{{ team.id }}/delete">
+          <span class="material-symbols-outlined">delete</span>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

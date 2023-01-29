@@ -11,6 +11,11 @@ import { DepartmentsListComponent } from './departments/departments-list/departm
 import { DepartmentDetailsComponent } from './departments/department-details/department-details.component';
 import { EditDepartmentComponent } from './departments/edit-department/edit-department.component';
 import { DeleteDepartmentComponent } from './departments/delete-department/delete-department.component';
+import { TeamsListComponent } from './teams/teams-list/teams-list.component';
+import { AddTeamComponent } from './teams/add-team/add-team.component';
+import { TeamDetailsComponent } from './teams/team-details/team-details.component';
+import { EditTeamComponent } from './teams/edit-team/edit-team.component';
+import { DeleteTeamComponent } from './teams/delete-team/delete-team.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth/login' },
@@ -33,7 +38,17 @@ const routes: Routes = [
       { path: ':id/delete', component: DeleteDepartmentComponent },
     ],
   },
-  { path: 'teams', component: TeamsComponent },
+  {
+    path: 'teams',
+    component: TeamsComponent,
+    children: [
+      { path: '', component: TeamsListComponent },
+      { path: 'new', component: AddTeamComponent },
+      { path: ':id', component: TeamDetailsComponent },
+      { path: ':id/edit', component: EditTeamComponent },
+      { path: ':id/delete', component: DeleteTeamComponent },
+    ],
+  },
   { path: 'employees', component: EmployeesComponent },
 ];
 

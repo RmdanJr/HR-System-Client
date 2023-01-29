@@ -1,0 +1,34 @@
+.details-wrapper {
+ margin: 50px 40px;
+}
+
+code {
+ color: darkorange;
+ background: #fff0f0;
+ padding: 2px 5px;
+}
+
+details {
+ background: #eee;
+ margin-bottom: 10px;
+}
+
+details ol {
+ margin: 0;
+ background: #fff;
+ padding: 10px 40px 15px;
+ border: 1px solid #eee;
+}
+
+details summary {
+ padding: 15px;
+ user-select: none;
+ cursor: pointer;
+ font-weight: bold;
+}
+
+a {
+ text-decoration: none;
+ border-bottom: 1px dashed #535353;
+ color: black;
+}
