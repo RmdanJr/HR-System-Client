@@ -28,6 +28,14 @@
       <li>Insurance Amount: {{ employee.salary.insuranceAmount }}</li>
     </ul>
   </details>
+  <details open *ngIf="employee.expertises !== null">
+    <summary>Expertises: {{ employee.expertises.size }}</summary>
+    <ol>
+      <li *ngFor="let expertise of employee.expertises">
+        {{ expertise.name }}, {{ expertise.level }}
+      </li>
+    </ol>
+  </details>
   <p *ngIf="employee.department !== null">
     <span style="font-weight: bold">Department: </span>
     <a routerLink="/departments/{{ employee.department.id }}">

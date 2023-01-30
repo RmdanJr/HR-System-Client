@@ -1,25 +1,30 @@
 <div class="form-wrapper">
   <form action="" class="form">
-    <h3>Add New Employee</h3>
+    <h3>Edit Employee</h3>
     <div class="field">
       <label for="">Name</label>
-      <input type="text" placeholder="Enter name" />
+      <input type="text" placeholder="Enter name" [value]="employee.name" />
     </div>
     <div class="field">
       <label for="">Username</label>
-      <input type="text" placeholder="Enter username" />
-    </div>
-    <div class="field">
-      <label for="">Password</label>
-      <input type="text" placeholder="Enter password" />
+      <input
+        type="text"
+        placeholder="Enter username"
+        [value]="employee.username"
+      />
     </div>
     <div class="field">
       <label for="">Birth Date</label>
-      <input type="date" name="birthDate" id="birth-date" />
+      <input
+        type="date"
+        name="birthDate"
+        id="birth-date"
+        [value]="employee.birthDate"
+      />
     </div>
     <div class="field">
       <label for="">Gender</label>
-      <select name="gender" id="gender">
+      <select name="gender" id="gender" [value]="employee.gender">
         <option value="NOT_RESPONDED"></option>
         <option value="MALE">Male</option>
         <option value="FEMALE">Female</option>
@@ -75,7 +80,7 @@
         </option>
       </select>
     </div>
-    <div class="field">
+    <div class="field row-gap">
       <label for="">Managed Team</label>
       <select name="managedTeam" id="managed-team">
         <option value=""></option>
@@ -86,7 +91,7 @@
     </div>
     <div class="field">
       <label for="">Expertises</label>
-      <div class="expertise-field" *ngFor="let expertise of expertises">
+      <div class="expertise-field" *ngFor="let expertise of employee.expertises">
         <p>{{ expertise.name }}, {{ expertise.level }}</p>
         <span
           class="material-symbols-outlined"
@@ -110,27 +115,38 @@
     </div>
     <div class="field">
       <label for="">Managed Employees</label>
-      <div class="managed-employee-field" *ngFor="let employee of managedEmployees">
-        <p>{{ employee.name }}</p>
+      <div
+        class="managed-employee-field"
+        *ngFor="let managedEmployee of employee.managedEmployees"
+      >
+        <p>{{ managedEmployee.name }}</p>
         <span
           class="material-symbols-outlined"
-          (click)="deleteManagedEmployee(employee.id)"
+          (click)="deleteManagedEmployee(managedEmployee.id)"
         >
           delete
         </span>
       </div>
       <label>Add Employee</label>
       <div class="add-managed-employee-field">
-        <select name="employees" id="employees" class="add-managed-employee-select" #newManagedEmployee>
+        <select
+          name="employees"
+          id="employees"
+          class="add-managed-employee-select"
+          #newManagedEmployee
+        >
           <option *ngFor="let employee of employees" [value]="employee.id">
             {{ employee.name }}
           </option>
         </select>
-        <button class="btn add-managed-employee-btn" (click)="addNewManagedEmployee()">
+        <button
+          class="btn add-managed-employee-btn"
+          (click)="addNewManagedEmployee()"
+        >
           Add Employee
         </button>
       </div>
     </div>
-    <button type="submit" class="btn submit-btn">Add Employee</button>
+    <button type="submit" class="btn submit-btn">Edit Employee</button>
   </form>
 </div>

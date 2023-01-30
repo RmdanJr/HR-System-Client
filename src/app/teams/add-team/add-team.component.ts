@@ -18,10 +18,10 @@ export class AddTeamComponent {
       salary: { gross: 30000, net: 24500, insuranceAmount: 500 },
       department: { id: 'sw-dev-department-id', name: 'Software Development' },
       team: { id: 'mrc-team-id', name: 'MRC' },
-      expertises: [
+      expertises: new Set([
         { name: 'C++', level: 'EXPERT' },
         { name: 'Java', level: 'NEWBIE' },
-      ],
+      ]),
       manager: { id: 'ayman-shebl-employee-id', name: 'Ayman Shebl' },
       managedDepartment: null,
       managedTeam: null,

@@ -16,6 +16,11 @@ import { AddTeamComponent } from './teams/add-team/add-team.component';
 import { TeamDetailsComponent } from './teams/team-details/team-details.component';
 import { EditTeamComponent } from './teams/edit-team/edit-team.component';
 import { DeleteTeamComponent } from './teams/delete-team/delete-team.component';
+import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
+import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
+import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
+import { DeleteEmployeeComponent } from './employees/delete-employee/delete-employee.component';
+import { EmployeesListComponent } from './employees/employees-list/employees-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth/login' },
@@ -49,7 +54,17 @@ const routes: Routes = [
       { path: ':id/delete', component: DeleteTeamComponent },
     ],
   },
-  { path: 'employees', component: EmployeesComponent },
+  {
+    path: 'employees',
+    component: EmployeesComponent,
+    children: [
+      { path: '', component: EmployeesListComponent },
+      { path: 'new', component: AddEmployeeComponent },
+      { path: ':id', component: EmployeeDetailsComponent },
+      { path: ':id/edit', component: EditEmployeeComponent },
+      { path: ':id/delete', component: DeleteEmployeeComponent },
+    ],
+  },
 ];
 
 @NgModule({

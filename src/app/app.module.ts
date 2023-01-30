@@ -22,6 +22,11 @@ import { DeleteTeamComponent } from './teams/delete-team/delete-team.component';
 import { TeamDetailsComponent } from './teams/team-details/team-details.component';
 import { TeamsListComponent } from './teams/teams-list/teams-list.component';
 import { EditTeamComponent } from './teams/edit-team/edit-team.component';
+import { AddEmployeeComponent } from './employees/add-employee/add-employee.component';
+import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
+import { DeleteEmployeeComponent } from './employees/delete-employee/delete-employee.component';
+import { EmployeesListComponent } from './employees/employees-list/employees-list.component';
+import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +49,11 @@ import { EditTeamComponent } from './teams/edit-team/edit-team.component';
     TeamDetailsComponent,
     TeamsListComponent,
     EditTeamComponent,
+    AddEmployeeComponent,
+    EditEmployeeComponent,
+    DeleteEmployeeComponent,
+    EmployeesListComponent,
+    EmployeeDetailsComponent,
   ],
   imports: [
     BrowserModule,
