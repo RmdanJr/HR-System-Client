@@ -56,14 +56,14 @@
   </p>
   <p *ngIf="employee.managedDepartment !== null">
     <span style="font-weight: bold">Managed Department: </span>
-    <a routerLink="/departments/{{ employee.managedDepartment.id }}">
-      {{ employee.managedDepartment.name }}
+    <a routerLink="/departments/{{ employee.managedDepartment!.id }}">
+      {{ employee.managedDepartment!.name }}
     </a>
   </p>
   <p *ngIf="employee.managedTeam !== null">
     <span style="font-weight: bold"> Managed Team: </span>
-    <a routerLink="/teams/{{ employee.managedTeam.id }}">
-      {{ employee.managedTeam.name }}
+    <a routerLink="/teams/{{ employee.managedTeam!.id }}">
+      {{ employee.managedTeam!.name }}
     </a>
   </p>
   <details open *ngIf="employee.managedEmployees.length > 0">

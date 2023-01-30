@@ -22,8 +22,11 @@ export class EmployeeDetailsComponent {
       { name: 'Java', level: 'NEWBIE' },
     ]),
     manager: { id: 'ayman-shebl-employee-id', name: 'Ayman Shebl' },
-    managedDepartment: null,
-    managedTeam: null,
+    managedDepartment: {
+      id: 'sw-dev-department-id',
+      name: 'Software Development',
+    },
+    managedTeam: { id: 'mrc-team-id', name: 'MRC' },
     managedEmployees: [],
   };
 }
