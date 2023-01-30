@@ -1,0 +1,71 @@
+<div class="details-wrapper">
+  <h3>
+    {{ employee.name }}
+    <span style="font-weight: 500; font-style: italic">
+      (Username: {{ employee.username }})
+    </span>
+  </h3>
+  <p>
+    <span style="font-weight: bold">ID: </span><code>{{ employee.id }}</code>
+  </p>
+  <p>
+    <span style="font-weight: bold">Gender: </span>
+    {{ employee.gender }}
+  </p>
+  <p>
+    <span style="font-weight: bold">Birth Date: </span>
+    {{ employee.birthDate }}
+  </p>
+  <p>
+    <span style="font-weight: bold">Graduation Date: </span>
+    {{ employee.graduationDate }}
+  </p>
+  <details open *ngIf="employee.salary !== null">
+    <summary>Salary: {{ employee.salary.gross }}</summary>
+    <ul>
+      <li>Gross: {{ employee.salary.gross }}</li>
+      <li>Net: {{ employee.salary.net }}</li>
+      <li>Insurance Amount: {{ employee.salary.insuranceAmount }}</li>
+    </ul>
+  </details>
+  <p *ngIf="employee.department !== null">
+    <span style="font-weight: bold">Department: </span>
+    <a routerLink="/departments/{{ employee.department.id }}">
+      {{ employee.department.name }}
+    </a>
+  </p>
+  <p *ngIf="employee.team !== null">
+    <span style="font-weight: bold">Team: </span>
+    <a routerLink="/teams/{{ employee.team.id }}">
+      {{ employee.team.name }}
+    </a>
+  </p>
+  <p *ngIf="employee.manager !== null">
+    <span style="font-weight: bold">Manager: </span>
+    <a routerLink="/employees/{{ employee.manager.id }}">
+      {{ employee.manager.name }}
+    </a>
+  </p>
+  <p *ngIf="employee.managedDepartment !== null">
+    <span style="font-weight: bold">Managed Department: </span>
+    <a routerLink="/departments/{{ employee.managedDepartment.id }}">
+      {{ employee.managedDepartment.name }}
+    </a>
+  </p>
+  <p *ngIf="employee.managedTeam !== null">
+    <span style="font-weight: bold"> Managed Team: </span>
+    <a routerLink="/teams/{{ employee.managedTeam.id }}">
+      {{ employee.managedTeam.name }}
+    </a>
+  </p>
+  <details open *ngIf="employee.managedEmployees.length > 0">
+    <summary>Managed Employees: {{ employee.managedEmployees.length }}</summary>
+    <ol>
+      <li *ngFor="let managedEmployee of employee.managedEmployees">
+        <a routerLink="/employees/{{ managedEmployee.id }}">
+          {{ managedEmployee.name }}
+        </a>
+      </li>
+    </ol>
+  </details>
+</div>
