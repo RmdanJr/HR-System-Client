@@ -1,0 +1,136 @@
+<div class="form-wrapper">
+  <form action="" class="form">
+    <h3>Add New Employee</h3>
+    <div class="field">
+      <label for="">Name</label>
+      <input type="text" placeholder="Enter name" />
+    </div>
+    <div class="field">
+      <label for="">Username</label>
+      <input type="text" placeholder="Enter username" />
+    </div>
+    <div class="field">
+      <label for="">Password</label>
+      <input type="text" placeholder="Enter password" />
+    </div>
+    <div class="field">
+      <label for="">Birth Date</label>
+      <input type="date" name="birthdate" id="birthdate" />
+    </div>
+    <div class="field">
+      <label for="">Gender</label>
+      <select name="gender" id="gender">
+        <option value="NOT_RESPONDED"></option>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="">Graduation Date</label>
+      <input type="date" name="graduationdate" id="graduationdate" />
+    </div>
+    <div class="field">
+      <label for="">Salary</label>
+      <input type="number" name="salary" id="salary" />
+    </div>
+    <div class="field">
+      <label for="">Manager</label>
+      <select name="manager" id="manager">
+        <option value=""></option>
+        <option *ngFor="let employee of employees" value="{{ employee.id }}">
+          {{ employee.name }}
+        </option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="">Department</label>
+      <select name="department" id="department">
+        <option value=""></option>
+        <option
+          *ngFor="let department of departments"
+          value="{{ department.id }}"
+        >
+          {{ department.name }}
+        </option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="">Team</label>
+      <select name="team" id="team">
+        <option value=""></option>
+        <option *ngFor="let team of teams" value="{{ team.id }}">
+          {{ team.name }}
+        </option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="">Managed Department</label>
+      <select name="managedDepartment" id="managed-department">
+        <option value=""></option>
+        <option
+          *ngFor="let department of departments"
+          value="{{ department.id }}"
+        >
+          {{ department.name }}
+        </option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="">Managed Team</label>
+      <select name="managedTeam" id="managed-team">
+        <option value=""></option>
+        <option *ngFor="let team of teams" value="{{ team.id }}">
+          {{ team.name }}
+        </option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="">Expertises</label>
+      <div class="expertise-field" *ngFor="let expertise of expertises">
+        <p>{{ expertise.name }}, {{ expertise.level }}</p>
+        <span
+          class="material-symbols-outlined"
+          (click)="deleteExpertise(expertise)"
+        >
+          delete
+        </span>
+      </div>
+      <label>Add Expertise</label>
+      <div class="add-expertise-field">
+        <input type="text" id="expertise-name" #expertiseName />
+        <select name="expertiseLevel" id="expertise-level" #expertiseLevel>
+          <option value="NEWBIE">Newbie</option>
+          <option value="INTERMEDIATE">Intermediate</option>
+          <option value="EXPERT">Expert</option>
+        </select>
+        <button class="btn add-expertise-btn" (click)="addNewExpertise()">
+          Add Expertise
+        </button>
+      </div>
+    </div>
+    <div class="field">
+      <label for="">Managed Employees</label>
+      <div class="managed-employee-field" *ngFor="let employee of managedEmployees">
+        <p>{{ employee.name }}</p>
+        <span
+          class="material-symbols-outlined"
+          (click)="deleteManagedEmployee(employee.id)"
+        >
+          delete
+        </span>
+      </div>
+      <label>Add Employee</label>
+      <div class="add-managed-employee-field">
+        <select name="employees" id="employees" class="add-managed-employee-select" #newManagedEmployee>
+          <option *ngFor="let employee of employees" [value]="employee">
+            {{ employee.name }}
+          </option>
+        </select>
+        <button class="btn add-managed-employee-btn" (click)="addNewManagedEmployee()">
+          Add Employee
+        </button>
+      </div>
+    </div>
+    <button type="submit" class="btn submit-btn">Add Department</button>
+  </form>
+</div>
