@@ -5,6 +5,9 @@
   justify-content: space-between;
   background-color: rgb(240, 219, 219);
   padding: 0 40px;
+  position: sticky;
+  width: 100%;
+  top: 0;
 }
 
 .brand {
