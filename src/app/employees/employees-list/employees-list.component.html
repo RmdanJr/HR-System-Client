@@ -1,0 +1,38 @@
+<div class="list-header">
+  <h3>Employees</h3>
+  <button class="btn"><a routerLink="new">Add Employee</a></button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Username</th>
+      <th>Salary</th>
+      <th>Department</th>
+      <th>Team</th>
+      <th>Manager</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{ employee.name }}</td>
+      <td>{{ employee.username }}</td>
+      <td>{{ employee.salary.gross }}</td>
+      <td>{{ employee.department.name }}</td>
+      <td>{{ employee.team.name }}</td>
+      <td>{{ employee.manager.name }}</td>
+      <td>
+        <a routerLink="{{ employee.id }}">
+          <span class="material-symbols-outlined">open_in_full</span>
+        </a>
+        <a routerLink="{{ employee.id }}/edit">
+          <span class="material-symbols-outlined">edit</span>
+        </a>
+        <a routerLink="{{ employee.id }}/delete">
+          <span class="material-symbols-outlined">delete</span>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
