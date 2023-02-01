@@ -52,6 +52,10 @@ a {
   cursor: pointer;
 }
 
-.msg-username {
-  font-weight: bold;
+.logout-btn {
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  border-bottom: 1px solid;
 }

@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertService } from 'src/app/shared/alert/alert.service';
-
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -10,7 +7,7 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
   onSubmit(loginFormValue: { username: string; password: string }) {
     this.authService.login(loginFormValue);

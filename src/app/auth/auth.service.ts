@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 import { baseUrl } from '../app.constants';
 import { AlertService } from '../shared/alert/alert.service';
@@ -10,8 +10,12 @@ import { AlertService } from '../shared/alert/alert.service';
   providedIn: 'root',
 })
 export class AuthService {
-  public username: Subject<string> = new Subject();
-  public token: Subject<string> = new Subject();
+  public username: BehaviorSubject<string> = new BehaviorSubject(
+    localStorage.getItem('username')!
+  );
+  public token: BehaviorSubject<string> = new BehaviorSubject(
+    localStorage.getItem('token')!
+  );
 
   constructor(
     private httpClient: HttpClient,
@@ -21,13 +25,6 @@ export class AuthService {
 
   getToken(username: string, password: string) {
     return btoa(`${username}:${password}`);
-  }
-
-  autoLogin() {
-    if (localStorage.getItem('username') && localStorage.getItem('token')) {
-      this.username.next(localStorage.getItem('username')!);
-      this.token.next(localStorage.getItem('token')!);
-    }
   }
 
   login(loginFormValue: { username: string; password: string }) {
