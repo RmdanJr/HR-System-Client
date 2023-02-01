@@ -23,7 +23,7 @@ import { DeleteEmployeeComponent } from './employees/delete-employee/delete-empl
 import { EmployeesListComponent } from './employees/employees-list/employees-list.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'auth/login' },
+  { path: '', pathMatch: 'full', redirectTo: 'departments' },
   {
     path: 'auth',
     component: AuthComponent,
