@@ -10,6 +10,7 @@ import { TeamDetailsComponent } from './team-details/team-details.component';
 import { AddTeamComponent } from './add-team/add-team.component';
 import { EditTeamComponent } from './edit-team/edit-team.component';
 import { DeleteTeamComponent } from './delete-team/delete-team.component';
+import { TeamsRoutingModule } from './teams-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,12 @@ import { DeleteTeamComponent } from './delete-team/delete-team.component';
     EditTeamComponent,
     DeleteTeamComponent,
   ],
-  imports: [SharedModule, FormsModule, RouterModule, CommonModule],
+  imports: [
+    SharedModule,
+    FormsModule,
+    RouterModule,
+    CommonModule,
+    TeamsRoutingModule,
+  ],
 })
 export class TeamsModule {}

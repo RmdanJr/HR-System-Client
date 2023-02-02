@@ -11,6 +11,7 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
+import { EmployeesRoutingModule } from './employees-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,12 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
     EditEmployeeComponent,
     DeleteEmployeeComponent,
   ],
-  imports: [SharedModule, FormsModule, RouterModule, CommonModule],
+  imports: [
+    SharedModule,
+    FormsModule,
+    RouterModule,
+    CommonModule,
+    EmployeesRoutingModule,
+  ],
 })
 export class EmployeesModule {}

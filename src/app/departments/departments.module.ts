@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
+import { DepartmentsRoutingModule } from './departments-routing.module';
 
 import { DepartmentsComponent } from './departments.component';
 import { DepartmentsListComponent } from './departments-list/departments-list.component';
@@ -21,7 +22,13 @@ import { DeleteDepartmentComponent } from './delete-department/delete-department
     EditDepartmentComponent,
     DeleteDepartmentComponent,
   ],
-  imports: [SharedModule, RouterModule, FormsModule, CommonModule],
+  imports: [
+    SharedModule,
+    RouterModule,
+    FormsModule,
+    CommonModule,
+    DepartmentsRoutingModule,
+  ],
   providers: [],
 })
 export class DepartmentsModule {}
