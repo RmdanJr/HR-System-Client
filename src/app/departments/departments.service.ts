@@ -14,4 +14,8 @@ export class DepartmentsService {
   public getDepartment(id: string) {
     return this.httpClient.get<Department>(`${baseUrl}/departments/${id}`);
   }
+
+  public deleteDepartment(id: string) {
+    return this.httpClient.delete(`${baseUrl}/departments/${id}`);
+  }
 }

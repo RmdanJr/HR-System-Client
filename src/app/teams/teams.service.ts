@@ -14,4 +14,8 @@ export class TeamsService {
   public getTeam(id: string) {
     return this.httpClient.get<Team>(`${baseUrl}/teams/${id}`);
   }
+
+  public deleteTeam(id: string) {
+    return this.httpClient.delete(`${baseUrl}/teams/${id}`);
+  }
 }

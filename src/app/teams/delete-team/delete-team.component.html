@@ -1,5 +1,2 @@
-<app-teams-list></app-teams-list>
-<app-modal
-  message="do you want to delete team?"
-  [onCofirm]="confirm"
-></app-modal>
+<app-teams-list [isLoading]="false"></app-teams-list>
+<app-modal [message]="modelMessage" [onCofirm]="confirm"></app-modal>

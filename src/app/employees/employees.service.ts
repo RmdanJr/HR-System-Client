@@ -14,4 +14,8 @@ export class EmployeesService {
   public getEmployee(id: string) {
     return this.httpClient.get<Employee>(`${baseUrl}/employees/${id}`);
   }
+
+  public deleteEmployee(id: string) {
+    return this.httpClient.delete(`${baseUrl}/employees/${id}`);
+  }
 }

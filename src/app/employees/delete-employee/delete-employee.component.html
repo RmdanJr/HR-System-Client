@@ -1,2 +1,2 @@
-<app-employees-list></app-employees-list>
-<app-modal message="Modal Message?" [onCofirm]="delete"></app-modal>
+<app-employees-list [isLoading]="false"></app-employees-list>
+<app-modal [message]="modelMessage" [onCofirm]="confirm"></app-modal>

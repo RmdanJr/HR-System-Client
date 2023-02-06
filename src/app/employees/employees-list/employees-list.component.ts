@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Employee } from '../employee.model';
 import { EmployeesService } from '../employees.service';
 
@@ -8,7 +8,7 @@ import { EmployeesService } from '../employees.service';
   styleUrls: ['./employees-list.component.css'],
 })
 export class EmployeesListComponent implements OnInit {
-  isLoading: boolean = true;
+  @Input() isLoading: boolean = true;
   employees: Employee[] = [];
 
   constructor(public employeesService: EmployeesService) {}

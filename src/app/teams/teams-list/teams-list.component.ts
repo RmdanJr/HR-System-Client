@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Team } from '../team.model';
 import { TeamsService } from '../teams.service';
@@ -9,7 +9,7 @@ import { TeamsService } from '../teams.service';
   styleUrls: ['./teams-list.component.css'],
 })
 export class TeamsListComponent implements OnInit {
-  isLoading: boolean = true;
+  @Input() isLoading: boolean = true;
   teams: Team[] = [];
 
   constructor(public teamsService: TeamsService) {}

@@ -8,7 +8,7 @@ import { DepartmentsService } from '../departments.service';
   styleUrls: ['./departments-list.component.css'],
 })
 export class DepartmentsListComponent implements OnInit {
-  isLoading: boolean = true;
+  @Input() isLoading: boolean = true;
   departments: Department[] = [];
 
   constructor(public departmentsService: DepartmentsService) {}
