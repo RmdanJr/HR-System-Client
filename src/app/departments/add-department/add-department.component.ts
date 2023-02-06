@@ -7,7 +7,7 @@ import { Employee } from 'src/app/employees/employee.model';
   styleUrls: ['./add-department.component.css'],
 })
 export class AddDepartmentComponent {
-  @Input() employees: Employee[] = [
+  @Input() employees = [
     {
       id: 'hassan-ramadan-employee-id',
       username: 'RmdanJr',

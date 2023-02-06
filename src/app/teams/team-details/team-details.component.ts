@@ -1,22 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Team } from '../team.model';
+import { TeamsService } from '../teams.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-team-details',
   templateUrl: './team-details.component.html',
   styleUrls: ['./team-details.component.css'],
 })
-export class TeamDetailsComponent {
-  team = {
-    id: '348s-sdls-34k3-4l34',
-    name: 'MRC',
-    department: {
-      id: 'software-dev-department-id',
-      name: 'Software Development',
-    },
-    lead: { id: 'ayman-shebl-employee-id', name: 'Ayman Shebl' },
-    members: [
-      { id: 'hassan-ramadan-employee-id', name: 'Hassan Ramadan' },
-      { id: 'ayman-shebl-employee-id', name: 'Ayman Shebl' },
-    ],
-  };
+export class TeamDetailsComponent implements OnInit {
+  isLoading: boolean = true;
+  team: Team;
+
+  constructor(
+    public teamsService: TeamsService,
+    public route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    const teamId = this.route.snapshot.params['id'];
+    this.teamsService.getTeam(teamId).subscribe((team) => {
+      this.team = team;
+      this.isLoading = false;
+    });
+  }
 }

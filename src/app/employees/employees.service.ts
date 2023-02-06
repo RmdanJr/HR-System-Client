@@ -1,0 +1,17 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { baseUrl } from '../app.constants';
+import { Employee } from './employee.model';
+
+@Injectable({ providedIn: 'root' })
+export class EmployeesService {
+  constructor(private httpClient: HttpClient) {}
+
+  public getAllEmployees() {
+    return this.httpClient.get<Employee[]>(`${baseUrl}/employees`);
+  }
+
+  public getEmployee(id: string) {
+    return this.httpClient.get<Employee>(`${baseUrl}/employees/${id}`);
+  }
+}

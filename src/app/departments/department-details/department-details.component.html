@@ -1,4 +1,5 @@
-<div class="details-wrapper">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div *ngIf="!isLoading" class="details-wrapper">
   <h3>{{ department.name }} Department</h3>
   <p>
     <span style="font-weight: bold">ID: </span><code>{{ department.id }}</code>

@@ -1,15 +1,16 @@
-<div class="details-wrapper">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div *ngIf="!isLoading" class="details-wrapper">
   <h3>{{ team.name }} Team</h3>
   <p>
     <span style="font-weight: bold">ID: </span><code>{{ team.id }}</code>
   </p>
-  <p>
+  <p *ngIf="team.department">
     <span style="font-weight: bold">Department: </span>
     <a routerLink="/departments/{{ team.department.id }}">
       {{ team.department.name }}
     </a>
   </p>
-  <p>
+  <p *ngIf="team.lead">
     <span style="font-weight: bold">Lead: </span>
     <a routerLink="/employees/{{ team.lead.id }}">
       {{ team.lead.name }}

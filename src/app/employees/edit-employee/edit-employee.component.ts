@@ -13,7 +13,7 @@ export class EditEmployeeComponent {
   @ViewChild('expertiseName') expertiseName: ElementRef;
   @ViewChild('expertiseLevel') expertiseLevel: ElementRef;
 
-  employee: Employee = {
+  employee = {
     id: 'df34-l34j-23j4-dsf8',
     username: 'RmdanJr',
     name: 'Hassan Ramadan',
@@ -32,7 +32,7 @@ export class EditEmployeeComponent {
     managedTeam: null,
     managedEmployees: [],
   };
-  employees: Employee[] = [
+  employees = [
     {
       id: 'df34-l34j-23j4-dsf8',
       username: 'RmdanJr',
@@ -76,15 +76,15 @@ export class EditEmployeeComponent {
   }
 
   deleteManagedEmployee(employeeId: string) {
-    this.employee.managedEmployees = this.employee.managedEmployees.filter(
-      (employee) => employee.id != employeeId
-    );
+    // this.employee.managedEmployees = this.employee.managedEmployees.filter(
+    //   (employee) => employee.id != employeeId
+    // );
   }
 
   addNewManagedEmployee() {
-    this.employee.managedEmployees.push({
-      id: this.newManagedEmployee.nativeElement.value,
-      name: this.newManagedEmployee.nativeElement.textContent,
-    });
+    // this.employee.managedEmployees.push({
+    //   id: this.newManagedEmployee.nativeElement.value,
+    //   name: this.newManagedEmployee.nativeElement.textContent,
+    // });
   }
 }

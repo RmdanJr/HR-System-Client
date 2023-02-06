@@ -1,25 +1,29 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Department } from '../department.model';
+import { ActivatedRoute } from '@angular/router';
+import { DepartmentsService } from '../departments.service';
 
 @Component({
   selector: 'app-department-details',
   templateUrl: './department-details.component.html',
   styleUrls: ['./department-details.component.css'],
 })
-export class DepartmentDetailsComponent {
-  @Input() department: Department = {
-    id: 'sw-dev-department-id',
-    name: 'Software Development',
-    manager: { id: 'ayman-hassan-employee-id', name: 'Ayman Hassan' },
-    teams: [
-      { id: 'mrc-team-id', name: 'MRC' },
-      { id: 'tech-woriorrs-team-id', name: 'Tech Woriorrs' },
-      { id: 'another-team-team-id', name: 'another team' },
-    ],
-    employees: [
-      { id: 'ayman-hassan-employee-id', name: 'Ayman Hassan' },
-      { id: 'ayman-shebl-employee-id', name: 'Ayman Shebl' },
-      { id: 'hassan-ramadan-employee-id', name: 'Hassan Ramadan' },
-    ],
-  };
+export class DepartmentDetailsComponent implements OnInit {
+  isLoading: boolean = true;
+  department: Department;
+
+  constructor(
+    public departmentsService: DepartmentsService,
+    public route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    const departmentId = this.route.snapshot.params['id'];
+    this.departmentsService
+      .getDepartment(departmentId)
+      .subscribe((department) => {
+        this.department = department;
+        this.isLoading = false;
+      });
+  }
 }

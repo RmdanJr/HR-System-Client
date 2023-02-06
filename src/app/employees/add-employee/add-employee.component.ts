@@ -1,5 +1,4 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { findIndex } from 'rxjs';
 
 @Component({
   selector: 'app-add-employee',

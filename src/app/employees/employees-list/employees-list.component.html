@@ -2,7 +2,8 @@
   <h3>Employees</h3>
   <button class="btn"><a routerLink="new">Add Employee</a></button>
 </div>
-<table>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<table  *ngIf="!isLoading">
   <thead>
     <tr>
       <th>Name</th>

@@ -2,7 +2,8 @@
   <h3>Teams</h3>
   <button class="btn"><a routerLink="new">Add team</a></button>
 </div>
-<table>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<table *ngIf="!isLoading">
   <thead>
     <tr>
       <th>Name</th>
