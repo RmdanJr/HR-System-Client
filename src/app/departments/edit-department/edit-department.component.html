@@ -1,19 +1,25 @@
-<div class="form-wrapper">
-  <form action="" class="form">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="form-wrapper" *ngIf="!isLoading">
+  <form
+    class="form"
+    #editDepartmentForm="ngForm"
+    (ngSubmit)="onSubmit(editDepartmentForm.value)"
+  >
     <h3>Edit Department</h3>
     <div class="field">
       <label for="">Name</label>
       <input
         type="text"
-        placeholder="Edit department name"
-        [value]="department.name"
+        placeholder="Department name"
+        [(ngModel)]="department.name"
+        name="name"
       />
     </div>
     <div class="field">
       <label for="">Manager</label>
-      <select name="manager" id="manager" [(ngModel)]="managerId">
+      <select name="manager" id="manager" [(ngModel)]="managerId" ngModel>
         <option value=""></option>
-        <option *ngFor="let employee of employees" [value]="employee.id">
+        <option *ngFor="let employee of allEmployees" [value]="employee.id">
           {{ employee.name }}
         </option>
       </select>
@@ -33,7 +39,7 @@
             {{ team.name }}
           </option>
         </select>
-        <button class="btn add-team-btn" (click)="addNewTeam()">
+        <button type="button" class="btn add-team-btn" (click)="addNewTeam()">
           Add Team
         </button>
       </div>

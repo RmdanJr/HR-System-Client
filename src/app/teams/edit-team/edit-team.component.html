@@ -1,15 +1,29 @@
-<div class="form-wrapper">
-  <form action="" class="form">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="form-wrapper" *ngIf="!isLoading">
+  <form
+    action=""
+    class="form"
+    #editTeamForm="ngForm"
+    (ngSubmit)="onSubmit(editTeamForm.value)"
+  >
     <h3>Edit Team</h3>
     <div class="field">
       <label for="">Name</label>
-      <input type="text" placeholder="Edit team name" [value]="team.name" />
+      <input
+        type="text"
+        placeholder="Team name"
+        [(ngModel)]="team.name"
+        name="name"
+      />
     </div>
     <div class="field">
       <label for="">Department</label>
       <select name="department" id="department" [(ngModel)]="departmentId">
         <option value=""></option>
-        <option *ngFor="let department of departments" [value]="department.id">
+        <option
+          *ngFor="let department of allDepartments"
+          [value]="department.id"
+        >
           {{ department.name }}
         </option>
       </select>
@@ -18,7 +32,7 @@
       <label for="">Lead</label>
       <select name="lead" id="lead" [(ngModel)]="leadId">
         <option value=""></option>
-        <option *ngFor="let employee of employees" [value]="employee.id">
+        <option *ngFor="let employee of allEmployees" [value]="employee.id">
           {{ employee.name }}
         </option>
       </select>
@@ -36,12 +50,24 @@
       </div>
       <label *ngIf="getAvailableMembers().length !== 0">Add Member</label>
       <div *ngIf="getAvailableMembers().length !== 0" class="add-member-field">
-        <select name="members" id="members" class="add-member-select" #newMember>
-          <option *ngFor="let member of getAvailableMembers()" [value]="member.id">
+        <select
+          name="members"
+          id="members"
+          class="add-member-select"
+          #newMember
+        >
+          <option
+            *ngFor="let member of getAvailableMembers()"
+            [value]="member.id"
+          >
             {{ member.name }}
           </option>
         </select>
-        <button class="btn add-member-btn" (click)="addNewMember()">
+        <button
+          type="button"
+          class="btn add-member-btn"
+          (click)="addNewMember()"
+        >
           Add Member
         </button>
       </div>

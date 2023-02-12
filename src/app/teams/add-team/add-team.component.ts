@@ -1,5 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Department } from 'src/app/departments/department.model';
+import { DepartmentsService } from 'src/app/departments/departments.service';
 import { Employee } from 'src/app/employees/employee.model';
+import { EmployeesService } from 'src/app/employees/employees.service';
+import { AlertService } from 'src/app/shared/alert/alert.service';
+import { NewTeam, Team } from '../team.model';
+import { TeamsService } from '../teams.service';
 
 @Component({
   selector: 'app-add-team',
@@ -7,25 +14,81 @@ import { Employee } from 'src/app/employees/employee.model';
   styleUrls: ['./add-team.component.css'],
 })
 export class AddTeamComponent {
-  @Input() employees: Employee[] = [
-    {
-      id: 'hassan-ramadan-employee-id',
-      username: 'RmdanJr',
-      name: 'Hassan Ramadan',
-      birthDate: new Date(2000, 9, 1),
-      gender: 'MALE',
-      graduationDate: new Date(2022, 7, 1),
-      salary: { gross: 30000, net: 24500, insuranceAmount: 500 },
-      department: { id: 'sw-dev-department-id', name: 'Software Development' },
-      team: { id: 'mrc-team-id', name: 'MRC' },
-      expertises: [
-        { name: 'C++', level: 'EXPERT' },
-        { name: 'Java', level: 'NEWBIE' },
-      ],
-      manager: { id: 'ayman-shebl-employee-id', name: 'Ayman Shebl' },
-      managedDepartment: null,
-      managedTeam: null,
-      managedEmployees: [],
-    },
-  ];
+  @ViewChild('newMember') newMemberRef: ElementRef;
+  allEmployees: Employee[] = [];
+  allDepartments: Department[] = [];
+  teamMembers: Employee[] = [];
+
+  constructor(
+    public teamsService: TeamsService,
+    public employeesService: EmployeesService,
+    public departmentsService: DepartmentsService,
+    public alertService: AlertService,
+    public route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.employeesService
+      .getAllEmployees()
+      .subscribe((employees) => (this.allEmployees = employees));
+
+    this.departmentsService
+      .getAllDepartments()
+      .subscribe((departments) => (this.allDepartments = departments));
+  }
+
+  addNewMember() {
+    const newMember = this.allEmployees.find(
+      (member) => member.id === this.newMemberRef.nativeElement.value
+    );
+    if (newMember) this.teamMembers.push(newMember);
+  }
+
+  deleteMember(memberId: string) {
+    this.teamMembers = this.teamMembers.filter(
+      (member) => memberId !== member.id
+    );
+  }
+
+  getAvailableMembers() {
+    return this.allEmployees.filter((employee) => {
+      for (let teamMember of this.teamMembers) {
+        if (teamMember.id === employee.id) return false;
+      }
+      return true;
+    });
+  }
+
+  onSubmit(addTeamFormValue: {
+    name: string;
+    department: string;
+    lead: string;
+  }) {
+    const newTeam: NewTeam = {
+      name: addTeamFormValue.name,
+      department: {
+        id: addTeamFormValue.department,
+        name:
+          this.allDepartments.find(
+            (department) => department.id === addTeamFormValue.department
+          )?.name ?? '',
+      },
+      lead: {
+        id: addTeamFormValue.lead,
+        name:
+          this.allEmployees.find(
+            (employee) => employee.id === addTeamFormValue.lead
+          )?.name ?? '',
+      },
+      members: this.teamMembers,
+    };
+
+    this.teamsService.addTeam(newTeam).subscribe((added) => {
+      if (added)
+        this.alertService.alert(`${newTeam.name} team edited successfully!`, true);
+      else
+        this.alertService.alert(`${newTeam.name} team can't be edited!`, false);
+      history.back();
+    });
+  }
 }

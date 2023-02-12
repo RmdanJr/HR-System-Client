@@ -24,7 +24,7 @@
             : getTeamsNames(idx).join(", ")
         }}
       </td>
-      <td>{{ department.employees.length }}</td>
+      <td>{{ department.employees!.length }}</td>
       <td>
         <a routerLink="{{ department.id }}">
           <span class="material-symbols-outlined">open_in_full</span>

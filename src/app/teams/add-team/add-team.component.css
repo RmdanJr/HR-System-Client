@@ -48,3 +48,35 @@
  background: orange;
  color: #fff;
 }
+
+.members-field {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+}
+
+.members-field p {
+ margin: 0;
+ font-size: 14px;
+}
+
+.members-field span {
+ cursor: pointer;
+}
+
+.field .add-member-btn {
+ background-color: rgb(170, 170, 170);
+ width: 35%;
+ border-radius: 2rem;
+ margin: 0;
+}
+
+.field .add-member-select {
+ width: 60%;
+}
+
+.add-member-field {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}

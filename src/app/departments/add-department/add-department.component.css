@@ -48,3 +48,35 @@
  background: orange;
  color: #fff;
 }
+
+.team-field {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+}
+
+.team-field p {
+ margin: 0;
+ font-size: 14px;
+}
+
+.team-field span {
+ cursor: pointer;
+}
+
+.field .add-team-btn {
+ background-color: rgb(170, 170, 170);
+ width: 35%;
+ border-radius: 2rem;
+ margin: 0;
+}
+
+.field .add-team-select {
+ width: 60%;
+}
+
+.add-team-field {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}

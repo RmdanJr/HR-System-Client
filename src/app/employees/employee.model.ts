@@ -1,11 +1,12 @@
 export interface Employee {
   id: string;
   username: string;
+  password?: string;
   name: string;
   birthDate: Date;
   gender: string;
   graduationDate: Date;
-  salary: { gross: number; net: number; insuranceAmount: number };
+  salary: { gross: number; net?: number; insuranceAmount?: number };
   department: { id: string; name: string };
   team: { id: string; name: string };
   expertises: Array<{ name: string; level: string }>;

@@ -21,7 +21,7 @@
     <span style="font-weight: bold">Graduation Date: </span>
     {{ employee.graduationDate }}
   </p>
-  <details open *ngIf="employee.salary">
+  <details open *ngIf="employee.salary !== null">
     <summary>Salary: {{ employee.salary.gross }}</summary>
     <ul>
       <li>Gross: {{ employee.salary.gross }}</li>

@@ -1,25 +1,35 @@
 <div class="form-wrapper">
-  <form action="" class="form">
+  <form
+    action=""
+    class="form"
+    #addEmployeeForm="ngForm"
+    (ngSubmit)="onSubmit(addEmployeeForm.value)"
+  >
     <h3>Add New Employee</h3>
     <div class="field">
       <label for="">Name</label>
-      <input type="text" placeholder="Enter name" />
+      <input type="text" placeholder="Enter name" name="name" ngModel />
     </div>
     <div class="field">
       <label for="">Username</label>
-      <input type="text" placeholder="Enter username" />
+      <input type="text" placeholder="Enter username" name="username" ngModel />
     </div>
     <div class="field">
       <label for="">Password</label>
-      <input type="text" placeholder="Enter password" />
+      <input
+        type="password"
+        placeholder="Enter password"
+        name="password"
+        ngModel
+      />
     </div>
     <div class="field">
       <label for="">Birth Date</label>
-      <input type="date" name="birthDate" id="birth-date" />
+      <input type="date" name="birthDate" id="birth-date" ngModel />
     </div>
     <div class="field">
       <label for="">Gender</label>
-      <select name="gender" id="gender">
+      <select name="gender" id="gender" ngModel>
         <option value="NOT_RESPONDED"></option>
         <option value="MALE">Male</option>
         <option value="FEMALE">Female</option>
@@ -27,27 +37,27 @@
     </div>
     <div class="field">
       <label for="">Graduation Date</label>
-      <input type="date" name="graduationDate" id="graduation-date" />
+      <input type="date" name="graduationDate" id="graduation-date" ngModel />
     </div>
     <div class="field">
       <label for="">Salary</label>
-      <input type="number" name="salary" id="salary" />
+      <input type="number" name="salary" id="salary" ngModel />
     </div>
     <div class="field">
       <label for="">Manager</label>
-      <select name="manager" id="manager">
+      <select name="manager" id="manager" ngModel>
         <option value=""></option>
-        <option *ngFor="let employee of employees" value="{{ employee.id }}">
+        <option *ngFor="let employee of allEmployees" value="{{ employee.id }}">
           {{ employee.name }}
         </option>
       </select>
     </div>
     <div class="field">
       <label for="">Department</label>
-      <select name="department" id="department">
+      <select name="department" id="department" ngModel>
         <option value=""></option>
         <option
-          *ngFor="let department of departments"
+          *ngFor="let department of allDepartments"
           value="{{ department.id }}"
         >
           {{ department.name }}
@@ -56,19 +66,19 @@
     </div>
     <div class="field">
       <label for="">Team</label>
-      <select name="team" id="team">
+      <select name="team" id="team" ngModel>
         <option value=""></option>
-        <option *ngFor="let team of teams" value="{{ team.id }}">
+        <option *ngFor="let team of allTeams" value="{{ team.id }}">
           {{ team.name }}
         </option>
       </select>
     </div>
     <div class="field">
       <label for="">Managed Department</label>
-      <select name="managedDepartment" id="managed-department">
+      <select name="managedDepartment" id="managed-department" ngModel>
         <option value=""></option>
         <option
-          *ngFor="let department of departments"
+          *ngFor="let department of allDepartments"
           value="{{ department.id }}"
         >
           {{ department.name }}
@@ -77,9 +87,9 @@
     </div>
     <div class="field">
       <label for="">Managed Team</label>
-      <select name="managedTeam" id="managed-team">
+      <select name="managedTeam" id="managed-team" ngModel>
         <option value=""></option>
-        <option *ngFor="let team of teams" value="{{ team.id }}">
+        <option *ngFor="let team of allTeams" value="{{ team.id }}">
           {{ team.name }}
         </option>
       </select>
@@ -103,14 +113,21 @@
           <option value="INTERMEDIATE">Intermediate</option>
           <option value="EXPERT">Expert</option>
         </select>
-        <button class="btn add-expertise-btn" (click)="addNewExpertise()">
+        <button
+          type="button"
+          class="btn add-expertise-btn"
+          (click)="addNewExpertise()"
+        >
           Add Expertise
         </button>
       </div>
     </div>
     <div class="field">
       <label for="">Managed Employees</label>
-      <div class="managed-employee-field" *ngFor="let employee of managedEmployees">
+      <div
+        class="managed-employee-field"
+        *ngFor="let employee of managedEmployees"
+      >
         <p>{{ employee.name }}</p>
         <span
           class="material-symbols-outlined"
@@ -119,14 +136,29 @@
           delete
         </span>
       </div>
-      <label>Add Employee</label>
-      <div class="add-managed-employee-field">
-        <select name="employees" id="employees" class="add-managed-employee-select" #newManagedEmployee>
-          <option *ngFor="let employee of employees" [value]="employee.id">
+      <label *ngIf="getNewManagedEmployees().length > 0">Add Employee</label>
+      <div
+        *ngIf="getNewManagedEmployees().length > 0"
+        class="add-managed-employee-field"
+      >
+        <select
+          name="employees"
+          id="employees"
+          class="add-managed-employee-select"
+          #newManagedEmployee
+        >
+          <option
+            *ngFor="let employee of getNewManagedEmployees()"
+            [value]="employee.id"
+          >
             {{ employee.name }}
           </option>
         </select>
-        <button class="btn add-managed-employee-btn" (click)="addNewManagedEmployee()">
+        <button
+          type="button"
+          class="btn add-managed-employee-btn"
+          (click)="addNewManagedEmployee()"
+        >
           Add Employee
         </button>
       </div>

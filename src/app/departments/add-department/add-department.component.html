@@ -1,18 +1,48 @@
 <div class="form-wrapper">
-  <form action="" class="form">
+  <form
+    action=""
+    class="form"
+    #addDepartmentForm="ngForm"
+    (ngSubmit)="onSubmit(addDepartmentForm.value)"
+  >
     <h3>Add New Department</h3>
     <div class="field">
       <label for="">Name</label>
-      <input type="text" placeholder="Enter department name" />
+      <input
+        type="text"
+        placeholder="Enter department name"
+        ngModel
+        name="name"
+      />
     </div>
     <div class="field">
       <label for="">Manager</label>
-      <select name="manager" id="manager">
+      <select name="manager" id="manager" ngModel name="managerId">
         <option value=""></option>
-        <option *ngFor="let employee of employees" value="{{ employee.id }}">
+        <option *ngFor="let employee of allEmployees" value="{{ employee.id }}">
           {{ employee.name }}
         </option>
       </select>
+    </div>
+    <div class="field">
+      <label for="">Teams</label>
+      <div class="team-field" *ngFor="let team of selectedTeams">
+        <p>{{ team.name }}</p>
+        <span class="material-symbols-outlined" (click)="deleteTeam(team.id!)">
+          delete
+        </span>
+      </div>
+      <label *ngIf="getNewTeams().length !== 0">Add Team</label>
+      <div *ngIf="getNewTeams().length !== 0" class="add-team-field">
+        <select name="teams" id="teams" class="add-team-select" #newTeam>
+          <option *ngFor="let team of getNewTeams()" [value]="team.id">
+            {{ team.name }}
+          </option>
+        </select>
+        <button type="button" class="btn add-team-btn" (click)="addNewTeam()">
+          Add Team
+        </button>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary">Add Department</button>
   </form>

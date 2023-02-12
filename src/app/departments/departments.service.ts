@@ -15,7 +15,21 @@ export class DepartmentsService {
     return this.httpClient.get<Department>(`${baseUrl}/departments/${id}`);
   }
 
+  public addDepartment(department: Department) {
+    return this.httpClient.post<Department>(
+      `${baseUrl}/departments`,
+      department
+    );
+  }
+
+  public editDepartment(department: Department, id: string) {
+    return this.httpClient.put<Department>(
+      `${baseUrl}/departments/${id}`,
+      department
+    );
+  }
+
   public deleteDepartment(id: string) {
-    return this.httpClient.delete(`${baseUrl}/departments/${id}`);
+    return this.httpClient.delete<boolean>(`${baseUrl}/departments/${id}`);
   }
 }

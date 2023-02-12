@@ -1,19 +1,67 @@
 <div class="form-wrapper">
-  <form action="" class="form">
+  <form
+    action=""
+    class="form"
+    #addTeamForm="ngForm"
+    (ngSubmit)="onSubmit(addTeamForm.value)"
+  >
     <h3>Add New Team</h3>
     <div class="field">
       <label for="">Name</label>
-      <input type="text" placeholder="Enter team name" />
+      <input type="text" placeholder="Team name" ngModel name="name" />
+    </div>
+    <div class="field">
+      <label for="">Department</label>
+      <select name="department" id="department" ngModel>
+        <option value=""></option>
+        <option
+          *ngFor="let department of allDepartments"
+          [value]="department.id"
+        >
+          {{ department.name }}
+        </option>
+      </select>
     </div>
     <div class="field">
       <label for="">Lead</label>
-      <select name="lead" id="lead">
+      <select name="lead" id="lead" ngModel>
         <option value=""></option>
-        <option *ngFor="let employee of employees" value="{{ employee.id }}">
+        <option *ngFor="let employee of allEmployees" [value]="employee.id">
           {{ employee.name }}
         </option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary">Add Department</button>
+    <div class="field">
+      <label for="">Members</label>
+      <div class="members-field" *ngFor="let member of teamMembers">
+        <p>{{ member.name }}</p>
+        <span
+          class="material-symbols-outlined"
+          (click)="deleteMember(member.id)"
+        >
+          delete
+        </span>
+      </div>
+      <label *ngIf="getAvailableMembers().length !== 0">Add Member</label>
+      <div *ngIf="getAvailableMembers().length !== 0" class="add-member-field">
+        <select
+          name="members"
+          id="members"
+          class="add-member-select"
+          #newMember
+        >
+          <option
+            *ngFor="let member of getAvailableMembers()"
+            [value]="member.id"
+          >
+            {{ member.name }}
+          </option>
+        </select>
+        <button type="button" class="btn add-member-btn" (click)="addNewMember()">
+          Add Member
+        </button>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Team</button>
   </form>
 </div>
