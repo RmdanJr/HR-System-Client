@@ -6,6 +6,7 @@ import { EditTeamComponent } from './edit-team/edit-team.component';
 import { TeamDetailsComponent } from './team-details/team-details.component';
 import { TeamsListComponent } from './teams-list/teams-list.component';
 import { TeamsComponent } from './teams.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,10 +14,22 @@ const routes: Routes = [
     component: TeamsComponent,
     children: [
       { path: '', component: TeamsListComponent },
-      { path: 'new', component: AddTeamComponent },
-      { path: ':id', component: TeamDetailsComponent },
-      { path: ':id/edit', component: EditTeamComponent },
-      { path: ':id/delete', component: DeleteTeamComponent },
+      { path: 'new', component: AddTeamComponent, canActivate: [AuthGuard] },
+      {
+        path: ':id',
+        component: TeamDetailsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: ':id/edit',
+        component: EditTeamComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: ':id/delete',
+        component: DeleteTeamComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];

@@ -24,7 +24,7 @@ export class AddEmployeeComponent implements OnInit {
   allEmployees: Employee[] = [];
   expertises: Array<{ name: string; level: string }> = [];
   managedEmployees: Array<{ id: string; name: string }> = [];
-
+  gender: string = 'NOT_RESPONDED';
   constructor(
     public employeesService: EmployeesService,
     public departmentsService: DepartmentsService,

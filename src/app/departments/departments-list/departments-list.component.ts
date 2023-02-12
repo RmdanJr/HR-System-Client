@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Department } from '../department.model';
 import { DepartmentsService } from '../departments.service';
+import { AuthService, AuthStatus } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-departments-list',
@@ -10,10 +11,15 @@ import { DepartmentsService } from '../departments.service';
 export class DepartmentsListComponent implements OnInit {
   @Input() isLoading: boolean = true;
   departments: Department[] = [];
+  status: AuthStatus = 'NOT_LOGGED_IN';
 
-  constructor(public departmentsService: DepartmentsService) {}
+  constructor(
+    public departmentsService: DepartmentsService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit() {
+    this.status = this.authService.getStatus();
     this.departmentsService.getAllDepartments().subscribe((departments) => {
       this.departments = departments;
       this.isLoading = false;

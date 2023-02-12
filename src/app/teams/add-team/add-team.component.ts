@@ -85,9 +85,9 @@ export class AddTeamComponent {
 
     this.teamsService.addTeam(newTeam).subscribe((added) => {
       if (added)
-        this.alertService.alert(`${newTeam.name} team edited successfully!`, true);
+        this.alertService.alert(`${newTeam.name} team added successfully!`, true);
       else
-        this.alertService.alert(`${newTeam.name} team can't be edited!`, false);
+        this.alertService.alert(`${newTeam.name} team can't be added!`, false);
       history.back();
     });
   }

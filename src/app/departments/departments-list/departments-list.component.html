@@ -1,6 +1,8 @@
 <div class="list-header">
   <h3>Departments</h3>
-  <button class="btn"><a routerLink="new">Add department</a></button>
+  <button *ngIf="status === 'MANAGER'" class="btn">
+    <a routerLink="new">Add department</a>
+  </button>
 </div>
 <app-spinner *ngIf="isLoading"></app-spinner>
 <table *ngIf="!isLoading">
@@ -10,7 +12,7 @@
       <th>Manager</th>
       <th>Teams</th>
       <th>Employees No.</th>
-      <th>Actions</th>
+      <th *ngIf="status !== 'NOT_LOGGED_IN'">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -25,14 +27,14 @@
         }}
       </td>
       <td>{{ department.employees!.length }}</td>
-      <td>
+      <td *ngIf="status !== 'NOT_LOGGED_IN'">
         <a routerLink="{{ department.id }}">
           <span class="material-symbols-outlined">open_in_full</span>
         </a>
-        <a routerLink="{{ department.id }}/edit">
+        <a *ngIf="status === 'MANAGER'" routerLink="{{ department.id }}/edit">
           <span class="material-symbols-outlined">edit</span>
         </a>
-        <a routerLink="{{ department.id }}/delete">
+        <a *ngIf="status === 'MANAGER'" routerLink="{{ department.id }}/delete">
           <span class="material-symbols-outlined">delete</span>
         </a>
       </td>

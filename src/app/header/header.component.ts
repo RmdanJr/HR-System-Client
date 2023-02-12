@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { AuthService } from '../auth/auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   username: string;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, public route: Router) {}
 
   ngOnInit(): void {
     this.authService.username.subscribe((username) => {
@@ -23,5 +24,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authService.logout();
+    this.route.navigate(['/auth/login']);
   }
 }

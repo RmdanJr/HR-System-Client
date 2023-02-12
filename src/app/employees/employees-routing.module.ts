@@ -7,6 +7,7 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { DeleteEmployeeComponent } from './delete-employee/delete-employee.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,10 +15,26 @@ const routes: Routes = [
     component: EmployeesComponent,
     children: [
       { path: '', component: EmployeesListComponent },
-      { path: 'new', component: AddEmployeeComponent },
-      { path: ':id', component: EmployeeDetailsComponent },
-      { path: ':id/edit', component: EditEmployeeComponent },
-      { path: ':id/delete', component: DeleteEmployeeComponent },
+      {
+        path: 'new',
+        component: AddEmployeeComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: ':id',
+        component: EmployeeDetailsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: ':id/edit',
+        component: EditEmployeeComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: ':id/delete',
+        component: DeleteEmployeeComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];

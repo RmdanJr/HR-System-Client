@@ -106,3 +106,13 @@ h3 {
  justify-self: center;
  width: 50%;
 }
+
+@media screen and (max-width: 1100px) {
+ .form {
+  display: block;
+ }
+
+ .submit-btn {
+  width: 100%;
+ }
+}
