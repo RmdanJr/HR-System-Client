@@ -49,7 +49,7 @@
       {{ employee.team.name }}
     </a>
   </p>
-  <p *ngIf="employee.manager">
+  <p *ngIf="employee.manager" (click)="reloadComponent()">
     <span style="font-weight: bold">Manager: </span>
     <a routerLink="/employees/{{ employee.manager.id }}">
       {{ employee.manager.name }}
@@ -70,7 +70,7 @@
   <details open *ngIf="employee.managedEmployees">
     <summary>Managed Employees: {{ employee.managedEmployees.length }}</summary>
     <ol>
-      <li *ngFor="let managedEmployee of employee.managedEmployees">
+      <li *ngFor="let managedEmployee of employee.managedEmployees" (click)="reloadComponent()">
         <a routerLink="/employees/{{ managedEmployee.id }}">
           {{ managedEmployee.name }}
         </a>

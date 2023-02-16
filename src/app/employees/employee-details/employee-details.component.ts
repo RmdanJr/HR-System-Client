@@ -24,4 +24,8 @@ export class EmployeeDetailsComponent implements OnInit {
       this.isLoading = false;
     });
   }
+
+  reloadComponent() {
+    this.ngOnInit();
+  }
 }
